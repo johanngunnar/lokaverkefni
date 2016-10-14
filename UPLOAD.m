@@ -9,7 +9,7 @@ p = pwd; % notandi tharf ad vera stadsettur i moppu thar sem
 for i=1:2
     
     if i == 1
-        c='/Cemented/';
+        c='/data/Cemented/';
         s=strcat(p,c);
         cd(s);
         d = dir;
@@ -35,7 +35,7 @@ for i=1:2
             
         end    
     else 
-        c = '/Uncemented/';
+        c = '/data/Uncemented/';
         s=strcat(p,c);
         cd(s) 
         d = dir;

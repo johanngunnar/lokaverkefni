@@ -28,3 +28,7 @@ else
 end
 
 strcat(pwd,skastrik,'Cemented',skastrik)
+
+hist  % telur hve margir eru med akvedid gildi
+
+% stilling a dreyfninni 
