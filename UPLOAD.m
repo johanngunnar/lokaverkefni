@@ -9,18 +9,18 @@ p = pwd; % notandi tharf ad vera stadsettur i moppu thar sem
 for i=1:2
     
     if i == 1
-        c='/Cemented/'
-        s=strcat(p,c)
-        cd(s)
+        c='/Cemented/';
+        s=strcat(p,c);
+        cd(s);
         d = dir;
         
         maleC = 0; % latum teljarann fyrir karla i Cemented byrja i 0
         femaleC = 0; % sama fyrir konur
         
         for j = 4:length(d)
-             b = d(j).name
-             pre = strcat(s,b,'/PRE_O_grayvalues.txt')
-             post = strcat(s,b,'/POST_O_grayvalues.txt')
+             b = d(j).name;
+             pre = strcat(s,b,'/PRE_O_grayvalues.txt');
+             post = strcat(s,b,'/POST_O_grayvalues.txt');
              
             % teljum hve margir karlar eru i cemented groupunni
                     countMC = strfind(b,'M');
@@ -35,17 +35,17 @@ for i=1:2
             
         end    
     else 
-        c = '/Uncemented/'
-        s=strcat(p,c)
+        c = '/Uncemented/';
+        s=strcat(p,c);
         cd(s) 
         d = dir;
         
         maleU = 0; % latum teljarann fyrir karla i Uncemented byrja i 0
         femaleU = 0; % sama fyrir konur
         for j = 3:length(d)
-             b = d(j).name
-             pre = strcat(s,b,'/PRE_O_grayvalues.txt')
-             post = strcat(s,b,'/POST_O_grayvalues.txt')
+             b = d(j).name;
+             pre = strcat(s,b,'/PRE_O_grayvalues.txt');
+             post = strcat(s,b,'/POST_O_grayvalues.txt');
              
              % teljum hve margir karlar eru i Uncemented groupunni
                     countMU = strfind(b,'M');
@@ -65,5 +65,8 @@ end
 
 fprintf('Thad eru %.f karlar og %.f konur i Uncemented hopnum\n',maleU,femaleU)
 fprintf('Thad eru %.f karlar og %.f konur i Cemented hopnum',maleC,femaleC)
+
+cd('../')
+
 
 
