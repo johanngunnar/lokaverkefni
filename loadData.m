@@ -15,8 +15,8 @@ function [ data ] = loadData( data )
         
         % Load user data and add to data struct
         
-        preData = load(patient.pre);
-        postData = load(patient.post);
+        preData = load(patient.preUrl);
+        postData = load(patient.postUrl);
         
         data.patients(i).preData = preData;
         data.patients(i).postData = postData;

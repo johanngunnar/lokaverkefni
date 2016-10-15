@@ -23,13 +23,13 @@ for i=1:2
         
         for j = 1:length(files)
              b = files(j).name;
-             pre = strcat(s,b,'/PRE_O_grayvalues.txt');
-             post = strcat(s,b,'/POST_O_grayvalues.txt');
+             preUrl = strcat(s,b,'/PRE_O_grayvalues.txt');
+             postUrl = strcat(s,b,'/POST_O_grayvalues.txt');
              
              data.patients(patientCounter).name = b;
              data.patients(patientCounter).group = 'cemented';
-             data.patients(patientCounter).pre = pre;
-             data.patients(patientCounter).post = post;
+             data.patients(patientCounter).preUrl = preUrl;
+             data.patients(patientCounter).postUrl = postUrl;
              
              patientCounter = patientCounter + 1;
              
@@ -57,13 +57,13 @@ for i=1:2
         
         for j = 1:length(files)
              b = files(j).name;
-             pre = strcat(s,b,'/PRE_O_grayvalues.txt');
-             post = strcat(s,b,'/POST_O_grayvalues.txt');
+             preUrl = strcat(s,b,'/PRE_O_grayvalues.txt');
+             postUrl = strcat(s,b,'/POST_O_grayvalues.txt');
              
              data.patients(patientCounter).name = b;
              data.patients(patientCounter).group = 'uncemented';
-             data.patients(patientCounter).pre = pre;
-             data.patients(patientCounter).post = post;
+             data.patients(patientCounter).preUrl = preUrl;
+             data.patients(patientCounter).postUrl = postUrl;
              
              patientCounter = patientCounter + 1;
              
