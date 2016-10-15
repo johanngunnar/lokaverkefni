@@ -23,8 +23,6 @@ data = loadData(data);
 
 singleUser3D(data.patients(1));
 
-singleUser3D(data.patients(2));
-
-singleUser3D(data.patients(3));
+checkHounsfield(data);
 
 cd(workDir)
