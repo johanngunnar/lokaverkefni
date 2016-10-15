@@ -1,0 +1,68 @@
+function calcArea( data )
+%plotAvg Problem 6 - Plot average pixel density
+
+    
+    unitofAccuracy = 0.1;
+    
+    for i = 1:length(data.patients)
+        patient = data.patients(i);
+        preData = [];
+        
+        disp(['Looking at patient named ', patient.name]);
+        
+        % PRE OP
+        Y = patient.preData(:,4);
+        
+        Yfat = Y(((Y >= -150) & (Y <= -50)));
+        YMuscle = Y(((Y >= 0) & (Y <= 100)));
+
+        Yfat = createSlices(Yfat, unitofAccuracy);
+        YMuscle = createSlices(YMuscle, unitofAccuracy);
+        
+        Yfat'
+        
+        fatArea = sum(Yfat);
+        muscleArea = sum(YMuscle);
+       
+        fprintf('\nBefore operation, patient %s has muscle area of %.1f hounsfield and fat area of %.1f hounsfield \n \n',patient.name, muscleArea, fatArea );
+
+        % POST OP
+        
+        Y = patient.postData(:,4);
+        
+        Yfat = Y(((Y >= -150) & (Y <= -50)));
+        YMuscle = Y(((Y >= 0) & (Y <= 100)));
+
+        Yfat = createSlices(Yfat, unitofAccuracy);
+        YMuscle = createSlices(YMuscle, unitofAccuracy);
+        
+        fatArea = sum(Yfat);
+        muscleArea = sum(YMuscle);
+       
+        fprintf('\nPost operation, patient %s has muscle area of %.1f hounsfield and fat area of %.1f hounsfield \n \n',patient.name, muscleArea, fatArea );
+        
+    end
+      
+    
+end
+
+function X = createSlices( arr, unitofAccuracy )
+
+    Ncounter = 1;
+    
+    for i = -150:unitofAccuracy:100
+        c = 0;
+        
+        c = sum( (arr >= (i - unitofAccuracy)) & (arr <= i) );
+        
+        sliceArea = (c * unitofAccuracy);
+        
+        N(Ncounter) = sliceArea;
+        Ncounter = Ncounter + 1;
+    end
+    
+    X = N;
+    
+end
+
+

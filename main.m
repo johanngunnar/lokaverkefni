@@ -27,4 +27,6 @@ checkHounsfield(data);
 
 plotAvg(data);
 
+calcArea(data);
+
 cd(workDir)

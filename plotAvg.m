@@ -8,7 +8,6 @@ function plotAvg( data )
     
     for i = 1:length(data.patients)
         patient = data.patients(i);
-        patient.group
         
         if strcmp(patient.group, 'cemented')
             for ii = 1:length(patient.preData)
@@ -35,37 +34,36 @@ function plotAvg( data )
     
     figure;
     
+    subplot(2,2,1);
     plot(-150:1:100, CementedPre);
     ylabel('Percentage of pixels []');
     xlabel('Hounsfield units');
     title('Average curve for pre-op cemented')
     axis([-150, 100, 0, 2])
-    subplot(2,2,1);
     hold
     
+    subplot(2,2,2);
     plot(-150:1:100, CementedPost);
     ylabel('Percentage of pixels []');
     xlabel('Hounsfield units');
     title('Average curve for post-op cemented')
     axis([-150, 100, 0, 2])
-    subplot(2,2,2);
     hold
     
+    subplot(2,2,3);
     plot(-150:1:100, UncementedPre);
     ylabel('Percentage of pixels []');
     xlabel('Hounsfield units');
     title('Average curve for pre-op uncemented')
     axis([-150, 100, 0, 2])
-    subplot(2,2,3);
     hold
    
-    
+    subplot(2,2,4);
     plot(-150:1:100, UncementedPost);
     ylabel('Percentage of pixels []');
     xlabel('Hounsfield units');
     title('Average curve for post-op uncemented')
     axis([-150, 100, 0, 2])
-    subplot(2,2,4);
     
 end
 
