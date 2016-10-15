@@ -27,61 +27,53 @@ function plotAvg( data )
         end
         
     end
-        
-    CementedPre = sumAveragePixels(CementedPre);
-    CementedPost = sumAveragePixels(CementedPost);
-    UncementedPre = sumAveragePixels(UncementedPre);
-    UncementedPost = sumAveragePixels(UncementedPost);
+    
+    N = [];
+    
+    Ncounter = 1;
+    
+    CementedPre = sumAveragePixels(CementedPre)
+    CementedPost = sumAveragePixels(CementedPost)
+    UncementedPre = sumAveragePixels(UncementedPre)
+    UncementedPost = sumAveragePixels(UncementedPost)
     
     figure;
-    
     plot(-150:1:100, CementedPre);
     ylabel('Percentage of pixels []');
     xlabel('Hounsfield units');
     title('Average curve for pre-op cemented')
-    axis([-150, 100, 0, 2])
     subplot(2,2,1);
-    hold
-    
+    hold on
     plot(-150:1:100, CementedPost);
-    ylabel('Percentage of pixels []');
+        ylabel('Percentage of pixels []');
     xlabel('Hounsfield units');
-    title('Average curve for post-op cemented')
-    axis([-150, 100, 0, 2])
-    subplot(2,2,2);
-    hold
-    
+    title('Average curve for pre-op cemented')
+    subplot(2,2,1);
     plot(-150:1:100, UncementedPre);
-    ylabel('Percentage of pixels []');
+        ylabel('Percentage of pixels []');
     xlabel('Hounsfield units');
-    title('Average curve for pre-op uncemented')
-    axis([-150, 100, 0, 2])
-    subplot(2,2,3);
-    hold
-   
-    
+    title('Average curve for pre-op cemented')
+    subplot(2,2,1);
     plot(-150:1:100, UncementedPost);
-    ylabel('Percentage of pixels []');
+        ylabel('Percentage of pixels []');
     xlabel('Hounsfield units');
-    title('Average curve for post-op uncemented')
-    axis([-150, 100, 0, 2])
-    subplot(2,2,4);
-    
+    title('Average curve for pre-op cemented')
+    subplot(2,2,1);
+
 end
 
-function X = sumAveragePixels( arr )
+function sumAveragePixels( arr )
 
-    Ncounter = 1;
-    
     for i = -150:1:100
         c = 0;
         
-        c = sum((arr >= (i - 1)) & (arr <= i));
+        sumAveragePixels
+        c = sum((CementedPre >= (i - 1)) & (CementedPre <= i));
         
         N(Ncounter) = c;
         Ncounter = Ncounter + 1;
     end
     
-    X = N/sum(N)*100;
+    N = N/sum(N)*100;
     
 end
