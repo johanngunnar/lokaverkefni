@@ -18,11 +18,13 @@ end
 
 
 data = initData;
-
+    
 data = loadData(data);
 
 singleUser3D(data.patients(1));
 
 checkHounsfield(data);
+
+plotAvg(data);
 
 cd(workDir)

@@ -11,7 +11,7 @@ function checkHounsfield( data )
         minimumVal = min([min(unitsPre), min(unitsPost)]);
         maximumVal = max([max(unitsPre), max(unitsPost)]);
         
-        if (minimumVal < -150) || (maximumVal > 150)
+        if (minimumVal < -150) || (maximumVal > 100)
             fprintf('Sjuklingur numer %d fer ut fyrir edlilegar hounsfield einingar \n \n', i);
             flag = 0;
         end
