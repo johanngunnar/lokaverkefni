@@ -3,7 +3,8 @@ clear all
 close all
 clc
 
-p = pwd; % notandi tharf ad vera stadsettur i moppu thar sem
+global currd
+ = pwd; % notandi tharf ad vera stadsettur i moppu thar sem
          % Cemented og Uncemented mappan er svo pwd virki
 
 for i=1:2
@@ -67,6 +68,3 @@ fprintf('Thad eru %.f karlar og %.f konur i Uncemented hopnum\n',maleU,femaleU)
 fprintf('Thad eru %.f karlar og %.f konur i Cemented hopnum',maleC,femaleC)
 
 cd('../')
-
-
-
