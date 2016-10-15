@@ -7,7 +7,6 @@ function singleUser3D( patient )
     
     figure;
     plot3(X, Y, Z, 'r');
-    plot(X, Z, 'b');
     
     prevNum = Z(1);
     sliceCounter = 1;

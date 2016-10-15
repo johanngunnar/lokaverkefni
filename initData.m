@@ -3,7 +3,7 @@ function [data] = initData
 %the command window.
 
 global workDir
-workDir
+
 data = {};
 
 patientCounter = 1;

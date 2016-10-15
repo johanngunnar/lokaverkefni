@@ -25,6 +25,6 @@ singleUser3D(data.patients(1));
 
 checkHounsfield(data);
 
-plotAvg(data);
+% plotAvg(data);
 
 cd(workDir)
