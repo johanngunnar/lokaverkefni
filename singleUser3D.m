@@ -7,6 +7,7 @@ function singleUser3D( patient )
     
     figure;
     plot3(X, Y, Z, 'r');
+    title(char(['3d model for patient #', patient.name]))
     
     prevNum = Z(1);
     sliceCounter = 1;

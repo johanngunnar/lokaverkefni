@@ -1,20 +1,16 @@
 function calcArea( data )
-%plotAvg Problem 6 - Plot average pixel density
-
-    
+%calcArea Problem 7 - calculate the area under muscle and fat   
 
     for i = 1:length(data.patients)
         patient = data.patients(i);
         preData = [];
-        
-        disp(['Looking at patient named ', patient.name]);
-        
+                
         % PRE OP
         Y = patient.preData(:,4);
         
         Yfat = Y(((Y >= -150) & (Y <= -50)));
         YMuscle = Y(((Y >= 0) & (Y <= 100)));
-
+        
         Yfat = createSlices(Yfat);
         YMuscle = createSlices(YMuscle);
         
@@ -50,7 +46,7 @@ function X = createSlices( arr )
     for i = -150:1:100
         c = 0;
         
-        c = sum( (arr >= (i - 1)) & (arr <= i) );
+        c = sum(arr == i);
         
         sliceArea = (c * 1);
         

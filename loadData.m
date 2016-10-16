@@ -20,11 +20,10 @@ function [ data ] = loadData( data )
         
         data.patients(i).preData = preData;
         data.patients(i).postData = postData;
-        
     end
     
-    
     timeElapsed = toc;
+    
     fprintf('\nThad tok alls %.1f sek and lesa inn oll gognin \n',timeElapsed)
     
     data = data;

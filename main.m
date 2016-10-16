@@ -16,7 +16,6 @@ else
     skastrik = '\';
 end
 
-
 data = initData;
     
 data = loadData(data);
@@ -29,4 +28,6 @@ plotAvg(data);
 
 calcArea(data);
 
-cd(workDir)
+% plotDifference(data);
+
+% plotSlices(data);

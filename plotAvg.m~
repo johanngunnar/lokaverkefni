@@ -88,8 +88,7 @@ function X = sumAveragePixels( arr )
     for i = -150:1:100
         c = 0;
         
-        % Count the number of hounsfield units in each slice. 
-        c = sum(arr == i);
+        c = sum((arr >= (i - 1)) & (arr <= i));
         
         N(Ncounter) = c;
         Ncounter = Ncounter + 1;
