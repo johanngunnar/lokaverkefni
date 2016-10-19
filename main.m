@@ -24,10 +24,10 @@ singleUser3D(data.patients(1));
 
 checkHounsfield(data);
 
-plotAvg(data);
+output = plotAvg(data);
 
-calcArea(data);
+data = calcArea(data); 
 
-% plotDifference(data);
+yearByYear(data);
 
-% plotSlices(data);
+plotSlices(data);

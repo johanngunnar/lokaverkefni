@@ -1,4 +1,4 @@
-function plotAvg( data )
+function output = plotAvg( data )
 %plotAvg Problem 6 - Plot average pixel density
     
     % Initiate empty arrays for clarity 
@@ -10,91 +10,100 @@ function plotAvg( data )
     for i = 1:length(data.patients)
         % Define a patient to be worked on.
         patient = data.patients(i);
-        
-        if strcmp(patient.group, 'cemented')
-            for ii = 1:length(patient.preData)
-                CementedPre(ii) = patient.preData(ii,4);
-            end
-            for ii = 1:length(patient.postData)
-                CementedPost(ii) = patient.postData(ii,4);
-            end
-        else 
-            for ii = 1:length(patient.preData)
-                UncementedPre(ii) = patient.preData(ii,4);
-            end
-            for ii = 1:length(patient.postData)
-                UncementedPost(ii) = patient.postData(ii,4);
-            end
+       
+        Ncounter = 1;
+        for ii = -150:1:100
+            c = 0;
+            
+            data.patients(i).preVariance(Ncounter) = sum(patient.preData(:,4) == ii);
+            data.patients(i).postVariance(Ncounter) = sum(patient.postData(:,4) == ii);
+           
+            
+            Ncounter = Ncounter + 1;
         end
         
     end
     
-    % Call a subfunction to manipulate data
-    CementedPre = sumAveragePixels(CementedPre);
-    CementedPost = sumAveragePixels(CementedPost);
-    UncementedPre = sumAveragePixels(UncementedPre);
-    UncementedPost = sumAveragePixels(UncementedPost);
+    for i = 1:length(data.patients)
+        % Define a patient to be worked on.
+        patient = data.patients(i);
+        
+        if strcmp(patient.group, 'cemented')
+            for ii = 1:1:251
+                cpreVariance(i, ii) = data.patients(i).preVariance(ii);
+                cpostVariance(i, ii) = data.patients(i).postVariance(ii);
+            end
+        else
+            for ii = 1:1:251
+                upreVariance(i, ii) = data.patients(i).preVariance(ii);
+                upostVariance(i, ii) = data.patients(i).postVariance(ii);
+            end
+        end
+       
+
+    end  
     
-    figure;
+    for i = 1:1:251
+        
+        CementedPre(i) = mean(cpreVariance(:, i));
+        CementedPost(i) = mean(cpostVariance(:, i));
+        UncementedPre(i) = mean(upreVariance(:, i));
+        UncementedPost(i) = mean(upostVariance(:, i));
+        
+    end 
+      
+    CementedPre = proportional(CementedPre);
+    CementedPost = proportional(CementedPost);
+    UncementedPre = proportional(UncementedPre);
+    UncementedPost = proportional(UncementedPost);
+    
+    figure; 
     
     % Create a 2 by 2 subplot...
     subplot(2,2,1);
     
-    % Plot the pre-op data for the cemented group.
-    plot(-150:1:100, CementedPre);
+    % Plot the pre-op data for the uncemented group.
+    plot(-150:1:100, UncementedPre);
     % Define labels as stated in the project description
-    ylabel('Percentage of pixels []');
+    ylabel('Percentage of pixels');
     xlabel('Hounsfield units');
     % Create a plot-title
-    title('Average curve for pre-op cemented')
+    title('Average curve for pre-op uncemented')
     % Define a axis
     axis([-150, 100, 0, 2])
     % Hold the plotting
-    hold;
-    
-    % Same as above... 
-    subplot(2,2,2);
-    plot(-150:1:100, CementedPost);
-    ylabel('Percentage of pixels []');
-    xlabel('Hounsfield units');
-    title('Average curve for post-op cemented')
-    axis([-150, 100, 0, 2])
-    hold;
-    
-    subplot(2,2,3);
-    plot(-150:1:100, UncementedPre);
-    ylabel('Percentage of pixels []');
-    xlabel('Hounsfield units');
-    title('Average curve for pre-op uncemented')
-    axis([-150, 100, 0, 2])
-    hold;
    
-    subplot(2,2,4);
+    % Same as above...
+    subplot(2,2,2);
     plot(-150:1:100, UncementedPost);
-    ylabel('Percentage of pixels []');
+    ylabel('Percentage of pixels');
     xlabel('Hounsfield units');
     title('Average curve for post-op uncemented')
     axis([-150, 100, 0, 2])
     
+    subplot(2,2,3);
+    plot(-150:1:100, CementedPre);
+    ylabel('Percentage of pixels');
+    xlabel('Hounsfield units');
+    title('Average curve for pre-op cemented')
+    axis([-150, 100, 0, 2])
+    
+    subplot(2,2,4);
+    plot(-150:1:100, CementedPost);
+    ylabel('Percentage of pixels');
+    xlabel('Hounsfield units');
+    title('Average curve for post-op cemented')
+    axis([-150, 100, 0, 2])
+    
+    output = CementedPre;
+    
+    disp('Plot Avg Done')
+    
+   
 end
 
-function X = sumAveragePixels( arr )
-    
-    % Define a counter because array indicies can't be a negative number.
-    Ncounter = 1;
-    
-    % Loop through all of the 251 possible Hounsfield units as separate
-    % slices
-    for i = -150:1:100
-        c = 0;
+function X = proportional( arr )
         
-        % Count the number of hounsfield units in each slice. 
-        c = sum(arr == i);
-        
-        N(Ncounter) = c;
-        Ncounter = Ncounter + 1;
-    end
-    
-    X = N/sum(N)*100;
+    X = arr/sum(arr)*100;
     
 end
