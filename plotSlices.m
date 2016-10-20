@@ -36,7 +36,8 @@ function  plotSlices( data )
         
         % Create a dynamic subplot with a fixed number of three columns and
         % a dynamic number of rows. 
-        subplot(4,4,j);
+        subplot(4,4,j,'replace');
+        hold on;
         
         for i = 1:length(bottomSlize)
             % Define the (x,y) data-point to be plotted onto a graph
@@ -51,15 +52,18 @@ function  plotSlices( data )
             % Plot every (x,y) data-point to a graph with a color represented by
             % the hounsfield unit
             plot(x, y,'color', colors(colorNum, :),'marker', '.' );
-            hold on;
         end
         
         % Create a dynamic titlestr variable to use in the plot/subplot.
         titleStr = char(['Einstaklingur # ', num2str(j)]);
         title(titleStr);
+        % Turn off the axis and make it equal.
+        axis tight
         axis off;
         
     end
-    %hold off;
+    % Make a sound so I don't have to sit over the computer for 30 minutes.
+    load gong.mat;
+    sound(y);
 end
 

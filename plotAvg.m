@@ -1,4 +1,4 @@
-function output = plotAvg( data )
+function plotAvg( data )
 %plotAvg Problem 6 - Plot average pixel density
     
     % Initiate empty arrays for clarity 
@@ -11,24 +11,37 @@ function output = plotAvg( data )
         % Define a patient to be worked on.
         patient = data.patients(i);
        
+        % Init a seperate counter because we cant update a vector with a
+        % non-positive index value [-150, 0].
         Ncounter = 1;
+        
+        % For each patient, loop through all of the possible hounsfield
+        % values. 
         for ii = -150:1:100
-            c = 0;
             
+            % We update each patient with a [251x1] vector with values
+            % representing the amount of each hounsfield units in the
+            % patient data-set.
             data.patients(i).preVariance(Ncounter) = sum(patient.preData(:,4) == ii);
             data.patients(i).postVariance(Ncounter) = sum(patient.postData(:,4) == ii);
            
-            
+            % Increment the counter
             Ncounter = Ncounter + 1;
         end
         
     end
     
+    % Again, we loop through all of the patients. 
     for i = 1:length(data.patients)
         % Define a patient to be worked on.
         patient = data.patients(i);
         
+        % Divide patients into groups and create seperate data-vectors for
+        % cemented pre/post and uncemented pre/post
         if strcmp(patient.group, 'cemented')
+            % We split the patients into groups.
+            % Each patient gets his row, with 251 columns representing the
+            % sum total of each hounsfield value. 
             for ii = 1:1:251
                 cpreVariance(i, ii) = data.patients(i).preVariance(ii);
                 cpostVariance(i, ii) = data.patients(i).postVariance(ii);
@@ -43,6 +56,10 @@ function output = plotAvg( data )
 
     end  
     
+    % When the vectors are complete, we loop through each hounsfield value
+    % and find the average sum for each hounsfield value. 
+    % So if 3 patients have [3,6,9] instances of the hounsfield value -50, the mean
+    % is 6, and so on. 
     for i = 1:1:251
         
         CementedPre(i) = mean(cpreVariance(:, i));
@@ -51,7 +68,9 @@ function output = plotAvg( data )
         UncementedPost(i) = mean(upostVariance(:, i));
         
     end 
-      
+    
+    % We call the proportional subfunction that turns these into
+    % non-absolute values. 
     CementedPre = proportional(CementedPre);
     CementedPost = proportional(CementedPost);
     UncementedPre = proportional(UncementedPre);
@@ -94,8 +113,6 @@ function output = plotAvg( data )
     xlabel('Hounsfield units');
     title('Average curve for post-op cemented')
     axis([-150, 100, 0, 2])
-    
-    output = CementedPre;
     
     disp('Plot Avg Done')
     

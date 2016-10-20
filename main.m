@@ -20,14 +20,14 @@ data = initData;
     
 data = loadData(data);
 
-singleUser3D(data.patients(1));
+% singleUser3D(data.patients(1));
 
-checkHounsfield(data);
+% checkHounsfield(data);
 
-output = plotAvg(data);
+% plotAvg(data);
 
-data = calcArea(data); 
+% data = calcArea(data); 
 
-yearByYear(data);
+% yearByYear(data);
 
 plotSlices(data);

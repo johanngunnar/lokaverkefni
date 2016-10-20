@@ -66,21 +66,30 @@ function output = calcArea( data )
 end
 
 function X = arrToArea( arr )
+%arrToArea - take an array of values and manually integrate it to find
+%area. 
 
+    % Define a seperate counter to avoid negative-index error
     Ncounter = 1;
     
     for i = -150:1:100
-        c = 0;
         
-        c = sum(arr == i);
+        % Find how many instances of each hounsfield value can be found
+        % inside the input array.
+        y = sum(arr == i);
         
-        sliceArea = (c * 1);
+        % The area of this single slice must thus be the y value times the
+        % width of the slice, in this case 1. 
+        sliceArea = (y * 1);
         
+        % Add the slice area to a vector to return back to the main
+        % function.
         N(Ncounter) = sliceArea;
+
         Ncounter = Ncounter + 1;
     end
     
-    
+    % Sum together all of the slices to complete the manual integration. 
     X = sum(N);
     
 end
