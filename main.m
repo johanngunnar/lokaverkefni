@@ -22,12 +22,12 @@ data = loadData(data);
 
 % singleUser3D(data.patients(1));
 
-% checkHounsfield(data);
+checkHounsfield(data);
 
 % plotAvg(data);
 
-% data = calcArea(data); 
+data = calcArea(data); 
 
 % yearByYear(data);
 
-plotSlices(data);
+% plotSlices(data);

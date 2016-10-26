@@ -36,7 +36,7 @@ function  plotSlices( data )
         
         % Create a dynamic subplot with a fixed number of three columns and
         % a dynamic number of rows. 
-        subplot(4,4,j,'replace');
+        subplot(4,4,j);
         hold on;
         
         for i = 1:length(bottomSlize)

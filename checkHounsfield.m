@@ -18,7 +18,7 @@ function checkHounsfield( data )
         % If the minimum is less than -150 OR the maximum is greater than
         % 100 we print a message to the command window and flip the flag.
         if (minimumVal < -150) || (maximumVal > 100)
-            fprintf('Sjuklingur numer %d fer ut fyrir edlilegar hounsfield einingar \n \n', i);
+            fprintf('Sjuklingur numer %d - %s fer ut fyrir edlilegar hounsfield einingar \n \n', i, data.patients(i).name);
             flag = 0;
         end
     end
