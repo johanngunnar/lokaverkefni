@@ -2,9 +2,6 @@ function yearByYear( data )
 %yearByYear Problem 8 - Here we plot proportional change in muscle and fat
 %mass for every patient
     
-    Xcemented  = 1:sum([data.patients.groupSymbol] == 'c');
-    Xuncemented = 1:sum([data.patients.groupSymbol] == 'u');  
-    
     % Define two separate counters for both groups.
     cementedCounter = 1;
     uncementedCounter = 1;
@@ -43,22 +40,31 @@ function yearByYear( data )
 
     end
     
+    % We are not quite sure why, but we had to take hold off to proceed
+    % correctly.
+    
     hold off;
     figure;
     
+    % Start a 2x1 subplot
     subplot(2, 1, 1);
+    % Draw the cemented results wit a bar graph
     bar(Ycemented);
     
+    % Add a title, legend and labels
     title('Pre-op vs post-op: Cemented (%)');
     legend('Fat change', 'Muscle change');
     ylabel('Difference (%) Post vs Pre ');
     xlabel('Subject #');
     
+    % Hold the graph
     hold on;
     
     subplot(2, 1, 2);
+    % Draw the uncemented results wit a bar graph
     bar(Yuncemented);
     
+    % Add a title, legend and labels
     title('Pre-op vs post-op: Uncemented (%)');
     legend('Fat change', 'Muscle change');
     ylabel('Difference (%) Post vs Pre ');

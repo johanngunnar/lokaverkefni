@@ -1,4 +1,0 @@
-1. Taka 0.5 counter í burtu á Z-ás á singleUser3D mynd
-2. Muna að breyta skástrikum í skastrik breytuna
-3. Spyrja Magnús - Hvernig á hlutfallið í 8 að líta út?
-4.

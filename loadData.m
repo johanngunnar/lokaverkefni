@@ -14,11 +14,11 @@ function [ data ] = loadData( data )
         % Print a message to the command window  
         fprintf('Er ad lesa inn gogn fyrir %s hop, einstaklingur numer %d af %d \n',patient.group, counter, (totalPatients/2))
         
-        % Load user data and add to data struct
-        
+        % Load user data...
         preData = load(patient.preUrl);
         postData = load(patient.postUrl);
         
+        % ... and add to data struct
         data.patients(i).preData = preData;
         data.patients(i).postData = postData;
         
@@ -30,10 +30,12 @@ function [ data ] = loadData( data )
         end
     end
     
+    % Close the timer
     timeElapsed = toc;
     
     fprintf('\nThad tok alls %.1f sek and lesa inn oll gognin \n',timeElapsed)
     
+    % Return the updated data back to main.m
     data = data;
 end
 

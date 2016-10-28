@@ -16,18 +16,25 @@ else
     skastrik = '\';
 end
 
+% Call the specified functions. Each function solves at least one problem
+% stated in the job description.
+% --
+
 data = initData;
     
 data = loadData(data);
 
-% singleUser3D(data.patients(1));
+singleUser3D(data.patients(1));
 
 checkHounsfield(data);
 
-% plotAvg(data);
+plotAvg(data);
 
 data = calcArea(data); 
 
-% yearByYear(data);
+yearByYear(data);
 
 % plotSlices(data);
+
+% --
+% The End. 

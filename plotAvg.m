@@ -39,7 +39,6 @@ function plotAvg( data )
         % Divide patients into groups and create seperate data-vectors for
         % cemented pre/post and uncemented pre/post
         if strcmp(patient.group, 'cemented')
-            % We split the patients into groups.
             % Each patient gets his row, with 251 columns representing the
             % sum total of each hounsfield value. 
             for ii = 1:1:251
@@ -51,8 +50,7 @@ function plotAvg( data )
                 upreVariance(i, ii) = data.patients(i).preVariance(ii);
                 upostVariance(i, ii) = data.patients(i).postVariance(ii);
             end
-        end
-       
+        end    
 
     end  
     
@@ -119,8 +117,13 @@ function plotAvg( data )
    
 end
 
+% Subfunction  
+
 function X = proportional( arr )
-        
+    
+    % Return a vector with proportional values in comparison to the sum of
+    % all elements.
+    
     X = arr/sum(arr)*100;
     
 end
